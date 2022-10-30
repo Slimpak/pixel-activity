@@ -1,12 +1,16 @@
 <template>
   <div class="main">
     <div class="tools">
+      <toolsWrapper
+        v-model:colors="colorsArray"
+        v-model:title="title"
+      />
       <!-- <button @click="toggleShow()">
         Show
       </button> -->
     </div>
       <main class="content">
-        <h1>Activity in my heart:</h1>
+        <h1>{{ title }}:</h1>
         <dashBoard>
         </dashBoard>
       </main>
@@ -14,25 +18,39 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 
 import dashboard from './components/dashboard.vue'
+import toolsWrapper from './components/tools/toolsWrapper.vue'
+
+const COLORS = [
+  '#9be9a8;',
+  '#40c463',
+  '#216e39',
+]
 
 export default {
   name: 'App',
   components: {
     dashBoard: dashboard,
+    toolsWrapper,
   },
   setup() {
+    const colorsArray = ref(COLORS);
     const isShow = ref(false);
+    const title = ref('Hello');
 
     function toggleShow() {
       isShow.value = !isShow.value
     }
 
+    provide('arrayColors', colorsArray.value)
+
     return {
       isShow,
-        toggleShow
+        toggleShow,
+        colorsArray,
+        title
     };
   },
 }

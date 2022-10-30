@@ -9,33 +9,29 @@
   </template>
   
   <script>
-  import { ref, computed } from 'vue';
+  import { ref, computed, inject } from 'vue';
 
   export default {
     name: 'DayItem',
     setup() {
-    const COLORS = [
-      // 'rgba(27, 31, 35, 0.06)',
-      '#9be9a8;',
-      '#40c463',
-      '#216e39',
-    ]
-    const idColor = ref(Math.floor(Math.random() * 2));
+      const colors = inject('arrayColors', ref([]));
+      const idColor = ref(Math.floor(Math.random() * colors.length));
 
-    function addActivity() {
-      if (COLORS.length === idColor.value) return idColor.value = 1;
-      idColor.value += 1;
-    }
+      function addActivity() {
+        if (colors.length === idColor.value) return idColor.value = 1;
+        idColor.value += 1;
+      }
 
-    const getColor = computed(() => {
-      return COLORS[String(idColor.value)] 
-    });
+      const getColor = computed(() => {
+        return colors[String(idColor.value)] 
+      });
 
 
-    return {
-      getColor,
-      addActivity
-    };
+      return {
+        colors,
+        getColor,
+        addActivity
+      };
   },
     props: {
       msg: String
