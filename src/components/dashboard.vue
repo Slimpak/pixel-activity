@@ -1,44 +1,26 @@
 <template>
-  <div class="grid" >
-    <div
-      class="row"
-      v-for="row in 7"
-      :key="row"
+  <div class="" >
+    <YearItem
+      v-for="year, index in 3"
+      :key="index"
+      :top-year="index == 0"
     >
-      <DayItem
-        v-for="item in 52"
-        :key="item"
-      />
-    </div>
+    </YearItem>
   </div>
 </template>
 
 <script>
-import DayItem from './DayItem.vue'
+import YearItem from './YearItem.vue'
 
 export default {
   name: 'dashBoard',
   components: {
-    DayItem,
+    YearItem,
   },
-  props: {
-    msg: String
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .grid {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .row {
-    display: flex;
-    gap: 3px;
-  }
 
 </style>

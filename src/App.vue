@@ -6,7 +6,8 @@
       </button> -->
     </div>
       <main class="content">
-        <dashBoard v-show="true">
+        <h1>Activity in my heart:</h1>
+        <dashBoard>
         </dashBoard>
       </main>
   </div>
@@ -41,12 +42,13 @@ export default {
 
 * {
   box-sizing: border-box;
+  font-family: monospace;
   margin: 0;
 }
 
 .main {
   align-items: center;
-  background: #fff;
+  background: #1e1e1e;
   color: #fff;
   display: flex;
   height: 100vh;

@@ -15,15 +15,15 @@
     name: 'DayItem',
     setup() {
     const COLORS = [
-      'rgba(27, 31, 35, 0.06)',
+      // 'rgba(27, 31, 35, 0.06)',
       '#9be9a8;',
       '#40c463',
       '#216e39',
     ]
-    const idColor = ref(Math.floor(Math.random() * COLORS.length));
+    const idColor = ref(Math.floor(Math.random() * 2));
 
     function addActivity() {
-      if (COLORS.length === idColor.value) return idColor.value = 0;
+      if (COLORS.length === idColor.value) return idColor.value = 1;
       idColor.value += 1;
     }
 
@@ -51,7 +51,7 @@
     display: block;
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: rgba(27, 31, 35, 0.06);
     outline: 1px solid rgb(56 56 56 / 42%);
     outline-offset: -1px;
     border-radius: 2px;
