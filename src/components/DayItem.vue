@@ -3,22 +3,34 @@
       class="day"
       :style="`background: ${ getColor };`"
       @click="addActivity()"
+      @mouseover='handleEvent'
     >
       
     </div>
   </template>
   
   <script>
-  import { ref, computed, inject } from 'vue';
+  import { ref, computed, inject, watch } from 'vue';
 
   export default {
     name: 'DayItem',
     setup() {
+      const userClick = ref(false);
+      const clear = inject('provideTriggerClear', ref([]));
       const colors = inject('arrayColors', ref([]));
+      const fill = inject('provideTriggerFill', ref([]));
+      const drawMode = inject('provideActiveDraw', ref([]));
+      const indexColorDraw = inject('provideIndexColorDraw', ref([]));
       const idColor = ref(Math.floor(Math.random() * colors.length));
 
       function addActivity() {
-        if (colors.length === idColor.value) return idColor.value = 1;
+        console.log('indexColorDraw', indexColorDraw);
+        if (drawMode.status) return idColor.value = Number(indexColorDraw.index);
+        if (colors.length === idColor.value + 1) {
+          return idColor.value = 0;
+        }
+
+        userClick.value = true;
         idColor.value += 1;
       }
 
@@ -26,8 +38,24 @@
         return colors[String(idColor.value)] 
       });
 
+      watch(clear, () => {
+        idColor.value = 1;
+      });
+
+      watch(fill, () => {
+        if (!userClick.value) idColor.value = Math.floor(Math.random() * (colors.length - 1));
+      });
+
+      function handleEvent() {
+        if (drawMode.status) addActivity();
+      }
+
+      
+
 
       return {
+        handleEvent,
+        clear,
         colors,
         getColor,
         addActivity

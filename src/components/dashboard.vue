@@ -1,7 +1,7 @@
 <template>
   <div class="" >
     <YearItem
-      v-for="year, index in 3"
+      v-for="year, index in countYears"
       :key="index"
       :top-year="index == 0"
     >
@@ -17,6 +17,12 @@ export default {
   components: {
     YearItem,
   },
+  props: {
+      countYears: {
+          type: Number,
+          default: 0,
+      },
+    },
 }
 </script>
 

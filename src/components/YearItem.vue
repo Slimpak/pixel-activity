@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="year__title">
-        {{ '2022' }}
+        <input type="text" value="2022">
       </div>
       <div
         class="row"
@@ -87,11 +87,18 @@
         flex-direction: row;
         font-size: 14px;
         height: 100%;
-        opacity: 0.5;
         position: absolute;
-        right: 10px;
+        right: 8px;
         top: -6px;
         transform: rotate(90deg);
+
+        input {
+          background: transparent;
+          border: 0;
+          color: #fff;
+          opacity: 0.5;
+          width: 34px;
+        }
       }
     }
 

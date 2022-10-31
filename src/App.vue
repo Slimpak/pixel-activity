@@ -4,15 +4,18 @@
       <toolsWrapper
         v-model:colors="colorsArray"
         v-model:title="title"
+        v-model:countYears="countYears"
+        @draw="drawMode()"
+        @activeColor="activeColor($event)"
+        @reset="resetToBlack()"
+        @fill="fillColors()"
       />
-      <!-- <button @click="toggleShow()">
-        Show
-      </button> -->
     </div>
       <main class="content">
         <h1>{{ title }}:</h1>
-        <dashBoard>
-        </dashBoard>
+        <dashBoard
+          :countYears="Number(countYears)"
+        />
       </main>
   </div>
 </template>
@@ -24,8 +27,10 @@ import dashboard from './components/dashboard.vue'
 import toolsWrapper from './components/tools/toolsWrapper.vue'
 
 const COLORS = [
-  '#9be9a8;',
+  '#ebedf0',
+  '#9be9a8',
   '#40c463',
+  '#30a14e',
   '#216e39',
 ]
 
@@ -39,18 +44,56 @@ export default {
     const colorsArray = ref(COLORS);
     const isShow = ref(false);
     const title = ref('Hello');
+    const countYears = ref(3);
+    const triggerClear = ref({status: false});
+    const fillColorsTrigger = ref({status: false});
+    const activeDraw = ref({status: false});
+    const indexColorDraw = ref({index: 0});
+
+
+    function drawMode() {
+      console.log('drawMode', !activeDraw.value);
+      activeDraw.value.status = !activeDraw.value.status
+    }
+
+    function resetToBlack() {
+      console.log('resetToBlack', !triggerClear.value);
+      triggerClear.value.status = !triggerClear.value.status
+    }
 
     function toggleShow() {
       isShow.value = !isShow.value
     }
 
-    provide('arrayColors', colorsArray.value)
+    function activeColor(value) {
+      console.log(value);
+      indexColorDraw.value.index = value;
+      console.log('indexColorDraw.value', indexColorDraw.value);
+    }
+
+    function fillColors() {
+      console.log('resetToBlack', !triggerClear.value);
+      fillColorsTrigger.value.status = !fillColorsTrigger.value.status
+    }
+
+    provide('arrayColors', colorsArray.value);
+    provide('provideTriggerClear', triggerClear.value)
+    provide('provideTriggerFill', fillColorsTrigger.value);
+    provide('provideActiveDraw', activeDraw.value);
+    provide('provideIndexColorDraw', indexColorDraw.value);
 
     return {
+      activeColor,
       isShow,
-        toggleShow,
-        colorsArray,
-        title
+      fillColors,
+      drawMode,
+      toggleShow,
+      colorsArray,
+      title,
+      countYears,
+      resetToBlack,
+      activeDraw,
+      indexColorDraw
     };
   },
 }
