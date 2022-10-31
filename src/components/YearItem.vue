@@ -22,7 +22,7 @@
         :key="row"
       >
         <DayItem
-          v-for="item in 52"
+          v-for="item in 51"
           :key="item"
         />
       </div>

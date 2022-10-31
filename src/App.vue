@@ -43,7 +43,7 @@ export default {
   setup() {
     const colorsArray = ref(COLORS);
     const isShow = ref(false);
-    const title = ref('Hello');
+    const title = ref('My Activity');
     const countYears = ref(3);
     const triggerClear = ref({status: false});
     const fillColorsTrigger = ref({status: false});

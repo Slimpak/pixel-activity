@@ -25,8 +25,13 @@
 
       function addActivity() {
         console.log('indexColorDraw', indexColorDraw);
-        if (drawMode.status) return idColor.value = Number(indexColorDraw.index);
+        if (drawMode.status) {
+          userClick.value = true;
+          return idColor.value = Number(indexColorDraw.index)
+        }
+
         if (colors.length === idColor.value + 1) {
+          userClick.value = false;
           return idColor.value = 0;
         }
 
