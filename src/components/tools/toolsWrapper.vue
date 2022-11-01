@@ -3,15 +3,18 @@
         <h3>Tools:</h3>
         <hr />
         <div class="tools__item">
-            <h4>Draw mode: </h4>
-            <input
-                type="checkbox"
-                id="head"
-                name="head"
-                :checked="false"
-                @input="$emit('draw')"
-            >
+            <div class="">
+                <h4>Draw mode: </h4>
 
+                <input
+                    type="checkbox"
+                    id="head"
+                    name="head"
+                    v-model="drawStatus"
+                    @input="drawMode()"
+                >
+            </div>
+            <i> Click or use ESC </i>
         </div>
         <hr />
         <div class="tools__item">
@@ -103,6 +106,7 @@ export default {
         const { colors, title  } = toRefs(props);
         const inputTitle = ref(title);
         const inputNumber = ref(3);
+        const drawStatus = ref(false);
 
         function changeColor(e,id) {
             const res = colors.value;
@@ -112,9 +116,23 @@ export default {
             context.emit('update:colors', res);
         }
 
+        function drawMode() {
+            context.emit('draw')
+            drawStatus.value = !drawStatus.value;
+        }
+
+        document.addEventListener('keyup', function (evt) {
+            if (evt.keyCode === 27) {
+                console.log('27');
+                drawMode();
+            }
+        });
+
         return {
             changeColor,
             inputTitle,
+            drawMode,
+            drawStatus,
             inputNumber,
         }
     }

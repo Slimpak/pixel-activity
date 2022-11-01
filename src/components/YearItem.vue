@@ -51,9 +51,7 @@
       align-items: center;
       display: flex;
       flex-direction: column;
-      gap: 3px;
       margin-right: 20px;
-      margin-top: 3px;
       padding-left: 30px;
       position: relative;
 
@@ -107,7 +105,7 @@
   
     .row {
       display: flex;
-      gap: 3px;
+      // gap: 3px;
     }
   
   </style>

@@ -84,6 +84,7 @@
     outline: 1px solid rgb(56 56 56 / 42%);
     outline-offset: -1px;
     border-radius: 2px;
+    margin: 1.5px;
   }
   </style>
   
