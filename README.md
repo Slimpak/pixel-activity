@@ -1,6 +1,13 @@
 # pixel-activity
 ![image](https://user-images.githubusercontent.com/44109988/198902771-92eea270-cec1-4742-92f3-ecaeafb362d8.png)
 
+#Demo
+![localhost_8080_pixel-activity_](https://user-images.githubusercontent.com/44109988/199352325-e2fdbd15-96a4-4fcb-824b-4a729f151769.png)
+
+
+#Tools
+
+![localhost_8080_pixel-activity_ (1)](https://user-images.githubusercontent.com/44109988/199352345-403449f0-642e-416b-9641-0f029dc9a35e.png)
 
 ## Project setup
 ```
