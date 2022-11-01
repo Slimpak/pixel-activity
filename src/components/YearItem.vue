@@ -86,10 +86,10 @@
         display: flex;
         flex-direction: row;
         font-size: 14px;
-        height: 100%;
+        height: 20%;
         position: absolute;
-        right: 8px;
-        top: -6px;
+        right: -26px;
+        top: 33px;
         transform: rotate(90deg);
 
         input {
