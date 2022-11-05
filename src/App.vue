@@ -11,20 +11,20 @@
         @fill="fillColors()"
       />
     </div>
-      <main class="content">
-        <h1>{{ title }}:</h1>
-        <dashBoard
-          :countYears="Number(countYears)"
-        />
-      </main>
+    <main class="content">
+      <h1>{{ title }}:</h1>
+      <dashBoard
+        :count-years="Number(countYears)"
+      />
+    </main>
   </div>
 </template>
 
 <script>
 import { ref, provide } from 'vue';
 
-import dashboard from './components/dashboard.vue'
-import toolsWrapper from './components/tools/toolsWrapper.vue'
+import dashboard from './components/dashboard.vue';
+import toolsWrapper from './components/tools/toolsWrapper.vue';
 
 const COLORS = [
   '#ebedf0',
@@ -32,7 +32,7 @@ const COLORS = [
   '#40c463',
   '#30a14e',
   '#216e39',
-]
+];
 
 export default {
   name: 'App',
@@ -45,24 +45,23 @@ export default {
     const isShow = ref(false);
     const title = ref('My Activity');
     const countYears = ref(3);
-    const triggerClear = ref({status: false});
-    const fillColorsTrigger = ref({status: false});
-    const activeDraw = ref({status: false});
-    const indexColorDraw = ref({index: 0});
-
+    const triggerClear = ref({ status: false });
+    const fillColorsTrigger = ref({ status: false });
+    const activeDraw = ref({ status: false });
+    const indexColorDraw = ref({ index: 0 });
 
     function drawMode() {
       console.log('drawMode', !activeDraw.value);
-      activeDraw.value.status = !activeDraw.value.status
+      activeDraw.value.status = !activeDraw.value.status;
     }
 
     function resetToBlack() {
       console.log('resetToBlack', !triggerClear.value);
-      triggerClear.value.status = !triggerClear.value.status
+      triggerClear.value.status = !triggerClear.value.status;
     }
 
     function toggleShow() {
-      isShow.value = !isShow.value
+      isShow.value = !isShow.value;
     }
 
     function activeColor(value) {
@@ -73,11 +72,11 @@ export default {
 
     function fillColors() {
       console.log('resetToBlack', !triggerClear.value);
-      fillColorsTrigger.value.status = !fillColorsTrigger.value.status
+      fillColorsTrigger.value.status = !fillColorsTrigger.value.status;
     }
 
     provide('arrayColors', colorsArray.value);
-    provide('provideTriggerClear', triggerClear.value)
+    provide('provideTriggerClear', triggerClear.value);
     provide('provideTriggerFill', fillColorsTrigger.value);
     provide('provideActiveDraw', activeDraw.value);
     provide('provideIndexColorDraw', indexColorDraw.value);
@@ -93,10 +92,10 @@ export default {
       countYears,
       resetToBlack,
       activeDraw,
-      indexColorDraw
+      indexColorDraw,
     };
   },
-}
+};
 </script>
 
 <style>
